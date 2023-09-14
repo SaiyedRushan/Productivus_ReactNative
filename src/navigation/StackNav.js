@@ -1,18 +1,17 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MyDrawer from "./MyDrawer";
 import Home from "../screens/Home";
-import Login from "../screens/Login";
+import MyDrawer from "./MyDrawer";
 const Stack = createNativeStackNavigator();
 
-function MainNav() {
+function StackNav() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Drawer" component={MyDrawer} options={{ headerShown: false }} />
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Todos" component={Home} />
     </Stack.Navigator>
   );
 }
 
-export default MainNav;
+export default StackNav;

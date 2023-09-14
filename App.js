@@ -3,7 +3,11 @@ import { StyleSheet, Text, View } from "react-native";
 import { MD3LightTheme as DefaultTheme, PaperProvider } from "react-native-paper";
 import { AppRegistry } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import MainNav from "./src/navigation/MainNav";
+import { useState, useEffect } from "react";
+import Login from "./src/screens/Login";
+import StackNav from "./src/navigation/Stacknav";
+import { onAuthStateChanged } from "firebase/auth";
+import { FIREBASE_AUTH } from "./FirebaseConfig";
 
 const theme = {
   ...DefaultTheme,
@@ -15,11 +19,18 @@ const theme = {
 };
 
 export default function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      console.log(user);
+      setUser(user);
+    });
+  }, []);
+
   return (
     <PaperProvider theme={theme}>
-      <NavigationContainer>
-        <MainNav />
-      </NavigationContainer>
+      <NavigationContainer>{user ? <StackNav /> : <Login />}</NavigationContainer>
     </PaperProvider>
   );
 }
