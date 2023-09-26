@@ -5,10 +5,9 @@ import { AppRegistry } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import Login from "./src/screens/Login";
-import StackNav from "./src/navigation/Stacknav";
 import { onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_AUTH } from "./FirebaseConfig";
-
+import StackNav from "./src/navigation/StackNav";
 const theme = {
   ...DefaultTheme,
   colors: {
@@ -30,6 +29,7 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
+      {/* if logged in then show them the app, otherwise show them the login screen */}
       <NavigationContainer>{user ? <StackNav /> : <Login />}</NavigationContainer>
     </PaperProvider>
   );
