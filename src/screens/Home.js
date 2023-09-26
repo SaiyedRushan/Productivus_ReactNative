@@ -8,7 +8,6 @@ const Home = ({ navigation }) => {
     <View style={{ alignItems: "center", padding: 10 }}>
       <Title> Hello Champ </Title>
       <Paragraph>Let's get choppin'</Paragraph>
-      <Button onPress={() => FIREBASE_AUTH.signOut()}> Logout</Button>
     </View>
   );
 };

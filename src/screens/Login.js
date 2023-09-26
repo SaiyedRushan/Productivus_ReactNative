@@ -17,7 +17,6 @@ function Login() {
       const response = await signInWithEmailAndPassword(auth, email, password);
       console.log(response);
       setLoading(false);
-      alert("You're logged in");
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -34,7 +33,7 @@ function Login() {
       const response = await createUserWithEmailAndPassword(auth, email, password);
       console.log(response);
       setLoading(false);
-      alert("Check your emails for a verification link");
+      alert("Successfully registered");
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
